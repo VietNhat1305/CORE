@@ -138,10 +138,30 @@ export default {
   data() {
     return {
       showModal: false,
-      model: []
+      model: [],
+      list: []
     }
   },
 
-  methods: {}
+  created() {
+    this.getData()
+  },
+
+  methods: {
+    async getData() {
+      const params = {
+        start: 1,
+        limit: 10,
+        sortBy: 'age'
+      }
+      await this.$store
+        .dispatch('loDatStore/getPagingParams', params)
+        .then((res) => {
+          if (res != null && res.code === 0) {
+            this.list = res.data.data
+          }
+        })
+    }
+  }
 }
 </script>

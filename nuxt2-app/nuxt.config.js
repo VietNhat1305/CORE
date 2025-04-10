@@ -23,6 +23,11 @@ module.exports = {
       }
     ]
   },
+
+  server: {
+    port: 8080, // default: 3000
+    localhost: '0.0.0.0' // hoặc 'localhost'
+  },
   /*
    ** Customize the progress-bar color
    */
@@ -34,7 +39,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/apiClient.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -60,7 +65,10 @@ module.exports = {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL:
+      process.env.API_BASE_URL || 'https://apitest3.dongthap.gov.vn/api/v1/'
+  },
   /*
    ** Build configuration
    */
@@ -71,8 +79,7 @@ module.exports = {
     extend(config, ctx) {}
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    baseApiUrl:
-      process.env.BASE_API_URL || 'https://apitest3.dongthap.gov.vn/api/v1/'
+    API_BASE_URL:
+      process.env.API_BASE_URL || 'https://apitest3.dongthap.gov.vn/api/v1/'
   }
 }
