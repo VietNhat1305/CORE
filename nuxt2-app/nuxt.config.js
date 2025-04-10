@@ -14,7 +14,14 @@ module.exports = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -23,7 +30,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/assets/css/custom.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -62,5 +69,10 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    baseApiUrl:
+      process.env.BASE_API_URL || 'https://apitest3.dongthap.gov.vn/api/v1/'
   }
 }
